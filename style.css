@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'IM Fell English', serif;
+}
+
+body {
+    margin: 0;
+    padding: 10px;
+    color: #593b2b;
+    background: #f8e8d2;
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+button {
+    font:inherit;
+    cursor: pointer;
+}
+
+.game{
+    width: min(1200px, 100%);
+    margin:auto;
+}
+
+/* Top Bar */
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.top-bar h1 {
+    margin: 0;
+    color: #a34e2d;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    font-weight: bold;
+}
+
+/* Start & End Screens */
+
+.screen {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    text-align: center;
+}
+
+.cafe-shop {
+    display: flex;
+    width: 650px;
+    height: 650px;
+    object-fit: contain;
+    margin: 0 auto;
+    transform: translate(-50px);
+} 
+
+#start-button, #restart-button {
+    padding: 10px 20px;
+    color: white;
+    background: #a34e2d;
+    border: none;
+    border-radius: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: poointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#start-button, #restart-button {
+    animation: wiggle 1.8s ease-in-out infinite;
+}
+
+#start-button, #restart-button:hover {
+    background: #803b24; 
+}
+
+#start-button:hover,
+#restart-button:hover {
+    animation: none;
+    transform: scale(1.05);
+}
+
+@keyframes wiggle {
+      0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  10% {
+    transform: rotate(-3deg) scale(1.03);
+  }
+
+  20% {
+    transform: rotate(3deg) scale(1.03);
+  }
+
+  30% {
+    transform: rotate(-2deg) scale(1.02);
+  }
+
+  40% {
+    transform: rotate(2deg) scale(1.02);
+  }
+
+  50% {
+    transform: rotate(0deg) scale(1);
+  }
+}
