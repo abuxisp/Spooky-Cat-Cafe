@@ -115,6 +115,10 @@ let timerInterval;
 let gameRunning = false;
 let waitingForNextCustomer = false;
 
+// Customer patience timer
+let customerTimeLeft = 15;
+let customerTimerInterval;
+
 // Functions
 
 // Reset Drink
@@ -191,6 +195,46 @@ function updateSelectedButtons() {
   });
 }
 
+// Handle customer patience countdown
+function startCustomerTimer() {
+    clearInterval(customerTimerInterval);
+    customerTimeLeft = 15;
+
+    customerTimerInterval = setInterval(() => {
+        if (!gameRunning || waitingForNextCustomer) return;
+
+        customerTimeLeft--;
+
+        if (currentOrder) {
+            const iceText = currentOrder.ice ? "Yes" : "No";
+            const toppingText = currentOrder.toppings
+            .map(topping => toppingLabels[topping])
+            .join(" & ");
+
+            orderText.innerHTML = `
+            <strong>${currentOrder.name}</strong><br>
+            --------------------<br>
+            Ice: ${iceText}<br>
+            Syrup: ${syrupLabels[currentOrder.syrup]}<br>
+            Top: ${toppingText}<br>
+            --------------------<br>
+            Patience: ${customerTimeLeft}s
+            `;
+        }
+
+        if (customerTimeLeft <= 0) {
+            clearInterval(customerTimerInterval);
+            feedback.textContent = "Customer ran out of patience and left!";
+
+            setTimeout(() => {
+                if (gameRunning) {
+                    newCustomer();
+                }
+            }, 1200);
+        }
+    }, 1000);
+}
+
 
 // new customer
 function newCustomer() {
@@ -240,7 +284,7 @@ function startGame() {
     startSound.currentTime = 0;
 
     backgroundMusic.currentTime = 0;
-    backgroundMusic.play();
+    backgroundMusic.play().catch(() => {});
 
     timerInterval = setInterval(() => {
         timeLeft--;
