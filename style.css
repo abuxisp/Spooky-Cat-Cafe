@@ -526,3 +526,43 @@ button {
   background: #f5dfc5;
   transform: translateY(-2px);
 }
+
+.trash-button:active {
+  transform: scale(0.95);
+}
+
+#serve-button {
+  margin-top: 4px;
+  padding: 9px 16px;
+  color: white;
+  background: #a34e2d;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+#serve-button:hover {
+  background: #803b24;
+  transform: translateY(-2px);
+}
+
+
+/* FEEDBACK */
+#feedback {
+  min-height: 32px;
+  margin: 16px 0;
+  color: #a34e2d;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+/*  HIDDEN */
+[hidden] {
+  display: none !important;
+}
